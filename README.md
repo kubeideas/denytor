@@ -1,2 +1,3 @@
 # denytor
-This application create istio authorization policy to deny tor exit nodes
+
+This application create istio authorization policy to deny TOR exit nodes
