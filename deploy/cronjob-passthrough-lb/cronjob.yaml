@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: istio-denytor
+  namespace: istio-system
+spec:
+  ## run every hour
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: denytor
+          containers:
+          - name: denytor
+            image: kubeideas/denytor:v0.1.0
+            imagePullPolicy: IfNotPresent
+            args:
+            - -remote-ip-block=false
+            - -tor-exit-nodes-list-url=https://raw.githubusercontent.com/SecOps-Institute/Tor-IP-Addresses/master/tor-nodes.lst 
+          restartPolicy: OnFailure 
