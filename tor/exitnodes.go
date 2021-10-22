@@ -11,20 +11,28 @@ import (
 //GetTorExitNodesList retrieves Tor exit ip list
 func GetTorExitNodesList(url string) []string {
 
-	resp, err := http.Get(url)
+	client := &http.Client{}
+	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
-		log.Fatalf("Error accessing url [ %s ]: %s", url, err)
+		log.Fatalf("Error creating http request: %s", err)
+	}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatalf("Error getting reponse for GET url [ %s ]: %s", url, err)
 	}
 
 	defer resp.Body.Close()
 
-	if !strings.Contains(resp.Header.Get("content-type"), "text/plain") {
-		log.Fatalf("Invalid content type! Expected [ text/plain; charset=utf-8 ] but received [ %s ]. Please check URL informed.", resp.Header.Get("content-type"))
-	}
-
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		log.Fatalln("Error getting body: ", err)
+		log.Fatalf("Error getting body: %s", err)
+	}
+
+	// check body type
+	detectedType := http.DetectContentType(body)
+	if !strings.Contains(detectedType, "text/plain") {
+		log.Fatalf("Invalid content type! Expected [ text/plain; charset=utf-8 ] but received [ %s ]. Please check URL informed.", detectedType)
 	}
 
 	log.Printf("Using TOR URL [ %s ] to create ip list.", url)
