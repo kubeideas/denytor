@@ -13,7 +13,7 @@ spec:
           serviceAccountName: denytor
           containers:
           - name: denytor
-            image: kubeideas/denytor:v0.1.0
+            image: kubeideas/denytor:v0.1.1
             imagePullPolicy: IfNotPresent
             args:
             #- -tor-exit-nodes-list-url=https://www.dan.me.uk/torlist/
