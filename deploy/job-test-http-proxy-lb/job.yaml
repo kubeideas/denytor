@@ -12,6 +12,7 @@ spec:
         image: kubeideas/denytor:v0.1.0
         imagePullPolicy: IfNotPresent
         args:
-        - -tor-exit-nodes-list-url=https://raw.githubusercontent.com/SecOps-Institute/Tor-IP-Addresses/master/tor-nodes.lst 
+        #- -tor-exit-nodes-list-url=https://www.dan.me.uk/torlist/
+        #- -tor-exit-nodes-list-url=https://raw.githubusercontent.com/SecOps-Institute/Tor-IP-Addresses/master/tor-nodes.lst 
       restartPolicy: OnFailure     
   backoffLimit: 4 
