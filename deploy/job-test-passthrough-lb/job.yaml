@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: istio-denytor
+  namespace: istio-system
+spec:
+  template:
+    spec:
+      serviceAccountName: denytor
+      containers:
+      - name: denytor
+        image: kubeideas/denytor:v0.1.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - -remote-ip-block=false
+        - -tor-exit-nodes-list-url=https://raw.githubusercontent.com/SecOps-Institute/Tor-IP-Addresses/master/tor-nodes.lst 
+      restartPolicy: OnFailure     
+  backoffLimit: 4 
