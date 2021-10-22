@@ -10,7 +10,7 @@ Other URL's which respond content-type "text/plain" is supported as well.
 
 ## Kubernetes installation
 
-This application is intended to be schedule in kubernetes using a cronjob which keep TOR exit nodes IP list up-to-date.
+This application is intended to be scheduled in kubernetes using a cronjob which keep TOR exit nodes IP list up-to-date.
 
 Go to directory [ `deploy` ] and apply commands bellow:
 
