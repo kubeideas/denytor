@@ -1,6 +1,6 @@
 # denytor
 
-This application create istio authorization policy to deny TOR exit nodes.
+This application creates istio authorization policy to deny TOR exit nodes.
 
 ## URL to get IP list
 
