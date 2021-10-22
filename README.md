@@ -15,6 +15,6 @@ This application is intended to be scheduled in kubernetes using a cronjob which
 Go to directory [ `deploy` ] and apply commands bellow:
 
 ``` bash
-kubectl apply rbac/
-kubectl apply cronjob/
+kubectl apply -f rbac/
+kubectl apply -f cronjob/
 ```
