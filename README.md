@@ -6,7 +6,7 @@ This application creates istio authorization policy to deny TOR exit nodes.
 
 By default URL "https://check.torproject.org/torbulkexitlist" is used.
 
-Other URL's which respond content-type "text/plain" is supported as well.
+Other URL's which respond content-type "text/plain" are supported as well.
 
 ## Installation istio behind http proxy LB
 
